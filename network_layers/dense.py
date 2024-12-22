@@ -18,11 +18,12 @@ class Dense(Layer):
     # Note: the output of this layer is the input to the next layer
     # learning_rate: rate for updating the weights and bias
     def backward(self, output_gradient, learning_rate):
-        # Derivative of loss with respect to weights
+        # Derivative of loss with respect to weights, bias, and input
         weights_gradient = np.dot(output_gradient, self.input.T)
         bias_gradient = output_gradient
+        input_gradient = np.dot(self.weights.T, output_gradient)
         # Use gradient descent to update weights and bias
         self.weights -= learning_rate * weights_gradient
         self.bias -= learning_rate * bias_gradient
         # Derivative of loss with respect to input
-        return np.dot(self.weights.T, output_gradient)
+        return input_gradient
