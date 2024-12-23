@@ -13,7 +13,7 @@ A minimalistic and customizable neural network built from scratch using Python a
     
 - **Model Engine**
   - An "engine" that trains, evaluates, saves, and loads the neural network.
-  - Adjustable learning rates for training (backpropagation).
+  - Adjustable epochs and learning rates for training.
   - Custom accuracy functions for evaluation.
   
 ## 💡 Performance
