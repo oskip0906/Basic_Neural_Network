@@ -29,4 +29,4 @@ A minimalistic and customizable neural network built from scratch using Python a
   
 ---
 
-For a specific usage example, check out ```MNIST_model_train.py```.
+For a specific usage example, check out ```MNIST_model_train.py``` and ```MNIST_model_predict.py```.
