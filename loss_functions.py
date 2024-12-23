@@ -1,6 +1,8 @@
 import numpy as np
 
-# Mean Squared Error
+''' Loss functions '''
+
+# Mean Squared Error (Regression)
 class MeanSquaredError:
 
     def compute(y_true, y_pred):
@@ -9,7 +11,7 @@ class MeanSquaredError:
     def derivative(y_true, y_pred):
         return 2 * (y_pred - y_true) / np.size(y_true)
 
-# Mean Absolute Error
+# Mean Absolute Error (Regression)
 class MeanAbsoluteError:
 
     def compute(y_true, y_pred):
@@ -17,17 +19,25 @@ class MeanAbsoluteError:
 
     def derivative(y_true, y_pred):
         return np.sign(y_pred - y_true) / np.size(y_true)
-
-# Huber Loss
-class HuberLoss:
     
-    def __init__(self, delta=1.0):
-        self.delta = delta
+# Binary Cross Entropy (Binary Classification)
+class BinaryCrossEntropy:
 
-    def compute(self, y_true, y_pred):
-        error = y_true - y_pred
-        return np.mean(np.where(np.abs(error) < self.delta, 0.5 * error ** 2, self.delta * (np.abs(error) - 0.5 * self.delta)))
+    def compute(y_true, y_pred):
+        return -np.mean(y_true * np.log(y_pred) + (1 - y_true) * np.log(1 - y_pred))
 
-    def derivative(self, y_true, y_pred):
-        error = y_true - y_pred
-        return np.where(np.abs(error) < self.delta, error, self.delta * np.sign(error)) / np.size(y_true)
+    def derivative(y_true, y_pred):
+        return (y_pred - y_true) / (y_pred * (1 - y_pred) * np.size(y_true))
+
+# Categorical Cross Entropy (Multiclass Classification)
+class CategoricalCrossEntropy:
+
+    def compute(y_true, y_pred):
+        logits_stable = y_pred - np.max(y_pred, axis=0)
+        log_probs = logits_stable - np.log(np.sum(np.exp(logits_stable), axis=0))
+        return -np.mean(np.sum(y_true * log_probs, axis=0))
+    
+    def derivative(y_true, y_pred):
+        logits_stable = y_pred - np.max(y_pred, axis=0)
+        exp_logits = np.exp(logits_stable)
+        return exp_logits / np.sum(exp_logits, axis=0) - y_true

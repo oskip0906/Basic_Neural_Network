@@ -5,7 +5,6 @@ import numpy as np
 class Dense(Layer):
 
     def __init__(self, input_size, output_size):
-        print(input_size, output_size)
         # Initialize random weights and bias at the start
         self.weights = np.random.randn(output_size, input_size)
         self.bias = np.random.randn(output_size, 1)
