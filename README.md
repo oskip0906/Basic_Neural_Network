@@ -17,7 +17,7 @@ A minimalistic and customizable neural network built from scratch using Python a
   - Custom accuracy functions for evaluation
   
 ## 💡 Performance
-- Trained on the **MNIST dataset**, achieving **93.64% accuracy** on the testing set with custom hyperparameters.
+- Trained on the **MNIST dataset**, achieving **95% accuracy** on the testing set with custom hyperparameters.
 
 ## 🛠️ Requirements
 
