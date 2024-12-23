@@ -1,10 +1,10 @@
-import pickle
+from network.model_engine import ModelEngine
 import numpy as np
 from PIL import Image
 
 # Load the model
-with open('MNIST_MODEL.pkl', 'rb') as file:
-    model = pickle.load(file)
+engine = ModelEngine()
+engine.load('MNIST_MODEL.pkl')
 
 # Load image and predict the label
 def predict_label(image_path):
@@ -13,7 +13,7 @@ def predict_label(image_path):
     # Make sure the image is in the same shape as the expected model input
     img_array = np.reshape(np.array(img) / 255.0, (784, 1))
     # Predict the label
-    prediction = model.forward(img_array)
+    prediction = engine.model.forward(img_array)
     label = np.argmax(prediction, axis=0)
     return label[0]
 

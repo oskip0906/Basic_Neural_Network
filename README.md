@@ -10,8 +10,12 @@ A minimalistic and customizable neural network built from scratch using Python a
 - **Customizable Components**:
   - Fully connected (dense) layers with adjustable input and output sizes.
   - Multiple activation and loss functions that can be modified.
-  - Adjustable learning rates for efficient backpropagation.
- 
+    
+-  **Model Engine**
+  - An "engine" that trains, evaluates, saves, and loads the neural network
+  - Adjustable learning rates for training (backpropagation)
+  - Custom accuracy functions for evaluation
+  
 ## 💡 Performance
 - Trained on the **MNIST dataset**, achieving **93.64% accuracy** on the testing set with custom hyperparameters.
 
