@@ -1,4 +1,4 @@
-from network_layers.activation import Activation
+from network.layers.activation import Activation
 import numpy as np
 
 ''' Activation functions '''

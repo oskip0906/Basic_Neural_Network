@@ -1,4 +1,4 @@
-from network_layers.layer import Layer
+from network.layers.layer import Layer
 import numpy as np
 
 # Activation layer

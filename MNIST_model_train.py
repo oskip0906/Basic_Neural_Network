@@ -1,7 +1,7 @@
-from network import Network
-from network_layers.dense import Dense  
-from activation_functions import ReLU
-from loss_functions import CategoricalCrossEntropy
+from network.main import Network
+from network.layers.dense import Dense  
+from network.activation_functions import LeakyReLU
+from network.loss_functions import CategoricalCrossEntropy
 from utils import compute_classification_accuracy
 import numpy as np
 import pandas as pd
@@ -18,10 +18,10 @@ y_train = np.eye(10)[data.iloc[:, 0].values].reshape(60000, 10, 1)
 
 # Define layers
 layers = [
-    Dense(784, 128),
-    ReLU(),
-    Dense(128, 32),
-    ReLU(),
+    Dense(784, 64),
+    LeakyReLU(),
+    Dense(64, 32),
+    LeakyReLU(),
     Dense(32, 10)
 ]
 
